@@ -3,12 +3,10 @@ package com.ecommerce.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SupplierTest {
 
     @Test
-    public void deveInstanciarSupplierComSucesso() {
+    public void mustInstanciateSupplierWithSucess() {
 
         var companyAddres = new Address("Protasio Alves", "385", "Alto Petropolis", "Décimo Andar", "95345-000", "Porto Alegre", "RS");
         var companyContact = new Contact("RV51@gmail.com", "51944567738");
