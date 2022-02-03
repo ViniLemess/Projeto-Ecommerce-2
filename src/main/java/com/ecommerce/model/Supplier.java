@@ -23,6 +23,7 @@ public class Supplier extends Person{
         super(id, contact, address);
         this.tradingName = tradingName;
         this.cnpj = cnpj;
+        isValid();
     }
 
     public String getTradingName() {

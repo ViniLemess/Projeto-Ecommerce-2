@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class SupplierTest {
 
     @Test
-    public void mustInstanciateSupplierWithSucess() {
+    public void mustInstantiateSupplierWithSucess() {
 
         var companyAddres = new Address("Protasio Alves", "385", "Alto Petropolis", "Décimo Andar", "95345-000", "Porto Alegre", "RS");
         var companyContact = new Contact("RV51@gmail.com", "51944567738");
@@ -24,7 +24,7 @@ class SupplierTest {
             new Supplier(1L, null, null, "", "111");
         } catch (Exception exception) {
 
-            Assertions.assertEquals("[cnpj : CNPJ não pode ser nulo!, tradingName : Nome Fantasia não pode ser nulo!, address : Endereço não pode ser nulo!, contact : Contato não pode ser nulo!, tradingName : Nome Fantasia não pode ser vazio!]", exception.getMessage());
+            Assertions.assertEquals("[address : Endereço não pode ser nulo!, contact : Contato não pode ser nulo!, tradingName : Nome Fantasia não pode ser vazio!]", exception.getMessage());
         }
     }
 }

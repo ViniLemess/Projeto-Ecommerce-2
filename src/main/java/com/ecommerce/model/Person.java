@@ -27,7 +27,6 @@ public abstract class Person extends Entity {
         this.contact = contact;
         this.address = address;
         this.Id = id;
-        isValid();
     }
 
     public Long getId() {
