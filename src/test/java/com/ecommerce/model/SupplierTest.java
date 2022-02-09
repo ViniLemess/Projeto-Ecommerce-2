@@ -24,7 +24,7 @@ class SupplierTest {
             new Supplier(1L, null, null, "", "111");
         } catch (Exception exception) {
 
-            Assertions.assertEquals("[address : Endereço não pode ser nulo!, contact : Contato não pode ser nulo!, tradingName : Nome Fantasia não pode ser vazio!]", exception.getMessage());
+            Assertions.assertEquals("[cnpj : CNPJ Inválido!, address : Endereço não pode ser nulo!, contact : Contato não pode ser nulo!, tradingName : Nome Fantasia não pode ser vazio!]", exception.getMessage());
         }
     }
 }
