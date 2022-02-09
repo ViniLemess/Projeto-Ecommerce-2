@@ -12,7 +12,7 @@ public class Customer extends Person{
     @NotNull(message = "Nome não pode ser nulo!")
     @NotEmpty(message = "Nome não pode ser vazio!")
     private String name;
-    @CPF(groups = CPF.class, message = "CPF é obrigatorio!")
+    @CPF(message = "CPF Invalido!")
     @NotNull(message = "CPF não pode ser nulo!")
     private String cpf;
 
