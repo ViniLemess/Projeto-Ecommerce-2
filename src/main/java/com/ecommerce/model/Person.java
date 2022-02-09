@@ -1,9 +1,6 @@
 package com.ecommerce.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -12,6 +9,7 @@ public abstract class Person extends Entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Person_Id")
     protected Long Id;
     @Valid
     @NotNull(message = "Contato não pode ser nulo!")
@@ -20,8 +18,7 @@ public abstract class Person extends Entity {
     @NotNull(message = "Endereço não pode ser nulo!")
     protected Address address;
 
-    @Deprecated
-    public Person() {}
+    protected Person() {}
 
     public Person(Long id, Contact contact, Address address) {
         this.contact = contact;
