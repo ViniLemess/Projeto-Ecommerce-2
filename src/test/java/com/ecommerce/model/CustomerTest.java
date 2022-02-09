@@ -26,7 +26,7 @@ class CustomerTest {
             new Customer(1L, null, null, "", "133");
         } catch (Exception exception) {
 
-            Assertions.assertEquals("[address : Endereço não pode ser nulo!, contact : Contato não pode ser nulo!, name : Nome não pode ser vazio!]", exception.getMessage());
+            Assertions.assertEquals("[cpf : CPF Invalido!, address : Endereço não pode ser nulo!, contact : Contato não pode ser nulo!, name : Nome não pode ser vazio!]", exception.getMessage());
         }
     }
 }
