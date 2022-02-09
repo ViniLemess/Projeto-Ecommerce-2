@@ -12,12 +12,11 @@ public class Supplier extends Person{
     @NotNull(message = "Nome Fantasia não pode ser nulo!")
     @NotEmpty(message = "Nome Fantasia não pode ser vazio!")
     private String tradingName;
-    @CNPJ(groups = CNPJ.class, message = "CNPJ Inválido!")
+    @CNPJ(message = "CNPJ Inválido!")
     @NotNull(message = "CNPJ não pode ser nulo!")
     private String cnpj;
 
-    @Deprecated
-    public Supplier() {}
+    protected Supplier() {}
 
     public Supplier(Long id, Contact contact, Address address, String tradingName, String cnpj) {
         super(id, contact, address);
