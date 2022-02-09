@@ -11,12 +11,12 @@ import java.util.List;
 @Repository
 public interface SupplierRepository extends JpaRepository<Supplier, Long> {
 
-    @Query("SELECT c FROM Supplier c WHERE c.tradingName LIKE %:tradingName%")
+    @Query("SELECT s FROM Supplier s WHERE s.tradingName LIKE %:tradingName%")
     public List<Supplier> searchAllSuppliers(@Param("tradingName") String tradingName);
 
-    @Query("SELECT c FROM Supplier c WHERE c.tradingName = :tradingName")
+    @Query("SELECT s FROM Supplier s WHERE s.tradingName = :tradingName")
     public Supplier searchSupplierByName(@Param("tradingName") String tradingName);
 
-    @Query("SELECT count(c) FROM Supplier c WHERE c.tradingName = :tradingName and (c.id != :id or :id is null)")
+    @Query("SELECT count(s) FROM Supplier s WHERE s.tradingName = :tradingName and (s.id != :id or :id is null)")
     public Long countByNameAndDifferentId(@Param("tradingName") String tradingName, @Param("id") Long id);
 }
