@@ -10,21 +10,21 @@ import java.util.Set;
 @MappedSuperclass
 public abstract  class Entity {
     void isValid() {
-        Configuration<?> configuracaoes = Validation.byDefaultProvider().configure();
-        ValidatorFactory fabrica = configuracaoes.buildValidatorFactory();
-        Validator validador = fabrica.getValidator();
-        Set<ConstraintViolation<Entity>> regrasVioladas = validador.validate(this);
+        Configuration<?> configurations = Validation.byDefaultProvider().configure();
+        ValidatorFactory fabric = configurations.buildValidatorFactory();
+        Validator validador = fabric.getValidator();
+        Set<ConstraintViolation<Entity>> violations = validador.validate(this);
 
-        Set<String> mensagens = new HashSet<>();
+        Set<String> messages = new HashSet<>();
 
-        for (ConstraintViolation<Entity> constraintViolation : regrasVioladas) {
+        for (ConstraintViolation<Entity> constraintViolation : violations) {
             String campo = constraintViolation.getPropertyPath().toString();
             String msg = constraintViolation.getMessage();
-            mensagens.add(campo.concat(" : ").concat(msg));
+            messages.add(campo.concat(" : ").concat(msg));
         }
 
-        if (!mensagens.isEmpty()) {
-            throw new InvalidDomainException(mensagens);
+        if (!messages.isEmpty()) {
+            throw new InvalidDomainException(messages);
         }
     }
 }
