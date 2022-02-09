@@ -19,6 +19,9 @@ public class Contact {
     @Size(max = 20, message = "Numero maximo de caracteres permitido é 20!")
     private String phoneNumber;
 
+    @Deprecated
+    protected Contact(){}
+
     public Contact(String email, String phoneNumber) {
         this.email = email;
         this.phoneNumber = phoneNumber;
