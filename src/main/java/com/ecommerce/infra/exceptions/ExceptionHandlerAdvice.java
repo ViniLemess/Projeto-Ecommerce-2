@@ -69,7 +69,7 @@ public class ExceptionHandlerAdvice {
     }
 
     @ExceptionHandler(GenericBusinessException.class)
-    public ResponseEntity<ApiErrorDTO> handlerExcecaoGenericaDeNegocio(GenericBusinessException exception) {
+    public ResponseEntity<ApiErrorDTO> handlerGenericBusinessException(GenericBusinessException exception) {
         logger.error("Exception {}, Message: {}", exception.getClass().getName(), exception.getMessage());
         Set<ErrorDTO> errors = Set.of(buildError(UNKNOWN_ERROR_KEY, exception.getMessage()));
         return ResponseEntity
