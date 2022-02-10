@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order  extends Entity{
+@javax.persistence.Entity
+public class Order extends Entity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +28,7 @@ public class Order  extends Entity{
     private LocalDateTime purchaseDate;
     @NotNull(message = "Frete não pode ser nulo")
     private Double shippingPrice;
+    @OneToMany(mappedBy = "order")
     private List<Item> itemList = new ArrayList<>();
 
     @Deprecated
