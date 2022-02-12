@@ -19,6 +19,7 @@ public abstract class Person extends Entity {
     @NotNull(message = "Endereço não pode ser nulo!")
     protected Address address;
 
+    @Deprecated
     protected Person() {}
 
     public Person(Long id, Contact contact, Address address) {
