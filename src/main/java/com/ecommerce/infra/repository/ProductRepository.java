@@ -11,12 +11,12 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("SELECT p FROM Product p WHERE p.name LIKE %:name%")
+    @Query("SELECT p FROM Product p WHERE p.productName LIKE %:name%")
     public List<Product> searchAllProducts(@Param("name") String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name = :name")
+    @Query("SELECT p FROM Product p WHERE p.productName = :name")
     public Product searchProductByName(@Param("name") String name);
 
-    @Query("SELECT count(p) FROM Product p WHERE p.name = :name and (p.id != :id or :id is null)")
+    @Query("SELECT count(p) FROM Product p WHERE p.productName = :name and (p.id != :id or :id is null)")
     public Long countByNameAndDifferentId(@Param("name") String name, @Param("id") Long id);
 }
