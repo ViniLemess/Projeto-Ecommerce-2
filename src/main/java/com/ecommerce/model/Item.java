@@ -43,4 +43,8 @@ public class Item extends Entity{
 
         return product.getUnitPrice() * quantity;
     }
+    public void setOrder(Order order) {
+
+        this.order = order;
+    }
 }

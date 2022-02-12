@@ -1,5 +1,7 @@
 package com.ecommerce.model;
 
+import com.ecommerce.infra.exceptions.GenericBusinessException;
+
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -28,22 +30,31 @@ public class Order extends Entity{
     private LocalDateTime purchaseDate;
     @NotNull(message = "Frete não pode ser nulo")
     private Double shippingPrice;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST})
     private List<Item> itemList = new ArrayList<>();
 
     @Deprecated
     protected Order(){}
 
-    public Order(Long id, Customer customer, Supplier supplier, Double shippingPrice) {
+    public Order(Long id, Customer customer, Supplier supplier, Double shippingPrice, Item item) {
         this.id = id;
         this.customer = customer;
         this.supplier = supplier;
         this.shippingPrice = shippingPrice;
         this.purchaseDate = LocalDateTime.now().withNano(0);
+        this.addItem(item);
         isValid();
     }
 
-    public void addItem(Item item){ itemList.add(item); }
+    public void addItem(Item item){
+
+        if(item == null) {
+
+            throw new GenericBusinessException("Novo Item não pode ser nulo!");
+        }
+        item.setOrder(this);
+        this.itemList.add(item);
+    }
 
     public Double getTotalItemsPrice() {
 
