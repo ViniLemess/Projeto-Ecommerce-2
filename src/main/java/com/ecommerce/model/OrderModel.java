@@ -2,6 +2,7 @@ package com.ecommerce.model;
 
 import com.ecommerce.infra.exceptions.GenericBusinessException;
 
+import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -9,28 +10,33 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@javax.persistence.Entity
-public class Order extends Entity{
+@Entity
+public class Order extends com.ecommerce.model.Entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Order_Id")
     private Long id;
+
     @Valid
     @ManyToOne
-    @JoinColumn(name = "Person_Id", updatable = false, insertable = false)
+    @JoinColumn(name = "Customer_Id")
     @NotNull(message = "Cliente não pode ser nulo!")
     private Customer customer;
+
     @Valid
     @ManyToOne
-    @JoinColumn(name = "Person_Id", updatable = false, insertable = false)
+    @JoinColumn(name = "Supplier_Id")
     @NotNull(message = "Fornecedor não pode ser nulo!")
     private Supplier supplier;
+
     @NotNull(message = "Data de compra não pode ser nula!")
     private LocalDateTime purchaseDate;
+
     @NotNull(message = "Frete não pode ser nulo")
     private Double shippingPrice;
-    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST})
+
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.ALL})
     private List<Item> itemList = new ArrayList<>();
 
     @Deprecated
