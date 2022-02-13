@@ -1,6 +1,7 @@
 package com.ecommerce.controller;
 
-import com.ecommerce.model.Order;
+import com.ecommerce.model.OrderModel;
+import com.ecommerce.service.DTO.OrderDTO;
 import com.ecommerce.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Order")
+@RequestMapping("/order")
 public class OrderController {
 
     private OrderService orderService;
@@ -17,17 +18,17 @@ public class OrderController {
     public OrderController(OrderService orderService) { this.orderService = orderService; }
 
     @PostMapping
-    public void createOrder(@RequestBody @Valid Order order) {
+    public void createOrder(@RequestBody @Valid OrderDTO newOrder) {
 
-        orderService.registerOrder(order);
+        orderService.registerOrder(newOrder);
     }
     @GetMapping
-    public List<Order> getOrders() {
+    public List<OrderModel> getOrders() {
 
         return orderService.searchAll();
     }
     @GetMapping(params = {"id"})
-    public Optional<Order> getOrderById(@RequestParam("id") Long id) {
+    public Optional<OrderModel> getOrderById(@RequestParam("id") Long id) {
 
         return orderService.searchById(id);
     }
