@@ -11,16 +11,19 @@ public class Item extends Entity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Item_Id")
     private Long id;
+
     @Valid
     @ManyToOne
     @JoinColumn(name = "Product_Id")
     @NotNull(message = "Produto não pode ser nulo!")
     private Product product;
+
     @NotNull(message = "Quantidade não pode ser nula!")
     private Integer quantity;
+
     @ManyToOne
     @JoinColumn(name = "Order_Id")
-    private Order order;
+    private OrderModel orderModel;
 
     @Deprecated
     protected Item(){}
@@ -43,8 +46,8 @@ public class Item extends Entity{
 
         return product.getUnitPrice() * quantity;
     }
-    public void setOrder(Order order) {
+    public void setOrder(OrderModel orderModel) {
 
-        this.order = order;
+        this.orderModel = orderModel;
     }
 }

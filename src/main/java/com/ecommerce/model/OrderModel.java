@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Order extends com.ecommerce.model.Entity {
+public class OrderModel extends com.ecommerce.model.Entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,13 +36,13 @@ public class Order extends com.ecommerce.model.Entity {
     @NotNull(message = "Frete não pode ser nulo")
     private Double shippingPrice;
 
-    @OneToMany(mappedBy = "order", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "orderModel", cascade = {CascadeType.ALL})
     private List<Item> itemList = new ArrayList<>();
 
     @Deprecated
-    protected Order(){}
+    protected OrderModel(){}
 
-    public Order(Long id, Customer customer, Supplier supplier, Double shippingPrice, Item item) {
+    public OrderModel(Long id, Customer customer, Supplier supplier, Double shippingPrice, Item item) {
         this.id = id;
         this.customer = customer;
         this.supplier = supplier;
@@ -54,10 +54,7 @@ public class Order extends com.ecommerce.model.Entity {
 
     public void addItem(Item item){
 
-        if(item == null) {
-
-            throw new GenericBusinessException("Novo Item não pode ser nulo!");
-        }
+        if(item == null) {return;}
         item.setOrder(this);
         this.itemList.add(item);
     }

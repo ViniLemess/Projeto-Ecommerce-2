@@ -3,9 +3,7 @@ package com.ecommerce.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class OrderTest {
+class OrderModelTest {
 
     @Test
     public void mustInstatiateOrderWithSucess() {
@@ -20,12 +18,12 @@ class OrderTest {
         var produto1 = new Product(1L, "Samsung S21", "Celularzão do BTS!", 6553.99);
         var item1 = new Item(1L, produto1, 5);
 
-        Order order1 = new Order(1L, customer, company, 5.5, item1);
+        OrderModel orderModel1 = new OrderModel(1L, customer, company, 5.5, item1);
 
-        Assertions.assertEquals(customer, order1.getCustomer());
-        Assertions.assertEquals(company, order1.getSupplier());
-        Assertions.assertEquals(5.5, order1.getShippingPrice());
-        Assertions.assertEquals(1, order1.getItemList().size());
+        Assertions.assertEquals(customer, orderModel1.getCustomer());
+        Assertions.assertEquals(company, orderModel1.getSupplier());
+        Assertions.assertEquals(5.5, orderModel1.getShippingPrice());
+        Assertions.assertEquals(1, orderModel1.getItemList().size());
     }
     @Test
     public void mustReturnTotalItemsPriceWithSuccess(){
@@ -41,9 +39,9 @@ class OrderTest {
         var produto1 = new Product(1L, "Samsung S21", "Celularzão do BTS!", 6553.99);
         var item1 = new Item(1L, produto1, 5);
 
-        Order order1 = new Order(1L, customer, company, 32.5, item1);
+        OrderModel orderModel1 = new OrderModel(1L, customer, company, 32.5, item1);
 
-        Assertions.assertEquals(32769.95, order1.getTotalItemsPrice(), 2);
+        Assertions.assertEquals(32769.95, orderModel1.getTotalItemsPrice(), 2);
     }
     @Test
     public void mustReturnTotalPriceWithSuccess(){
@@ -59,8 +57,8 @@ class OrderTest {
         var produto1 = new Product(1L, "Samsung S21", "Celularzão do BTS!", 6553.99);
         var item1 = new Item(1L, produto1, 5);
 
-        Order order1 = new Order(1L, customer, company, 32.5, item1);
+        OrderModel orderModel1 = new OrderModel(1L, customer, company, 32.5, item1);
 
-        Assertions.assertEquals(32802.45, order1.getTotalPrice(), 2);
+        Assertions.assertEquals(32802.45, orderModel1.getTotalPrice(), 2);
     }
 }
