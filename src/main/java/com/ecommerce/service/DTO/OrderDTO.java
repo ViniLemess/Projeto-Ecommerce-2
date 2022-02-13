@@ -6,7 +6,6 @@ public class OrderDTO {
 
     private Long Customer;
     private Long Supplier;
-    private Long Product;
     private Double shippingPrice;
     private List<ItemDTO> itemDTOList;
 
@@ -24,14 +23,6 @@ public class OrderDTO {
 
     public void setSupplier(Long supplier) {
         Supplier = supplier;
-    }
-
-    public Long getProduct() {
-        return Product;
-    }
-
-    public void setProduct(Long product) {
-        Product = product;
     }
 
     public Double getShippingPrice() {
