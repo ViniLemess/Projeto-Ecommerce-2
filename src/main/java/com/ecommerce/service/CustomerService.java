@@ -34,6 +34,10 @@ public class CustomerService {
         }
         return customerRepository.searchAllCustomers(name);
     }
+    public Customer searchCustomerById(Long id) {
+
+        return customerRepository.findById(id).get();
+    }
     private void validateDuplicatedRegister(String name, Long id) {
 
         var quantity = customerRepository.countByNameAndDifferentId(name, id);

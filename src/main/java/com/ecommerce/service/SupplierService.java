@@ -36,6 +36,10 @@ public class SupplierService {
         }
         return supplierRepository.searchAllSuppliers(tradingName);
     }
+    public Supplier searchSupplierById(Long id) {
+
+        return supplierRepository.findById(id).get();
+    }
     private void validateDuplicatedRegister(String tradingName, Long id) {
 
         var quantity = supplierRepository.countByNameAndDifferentId(tradingName, id);

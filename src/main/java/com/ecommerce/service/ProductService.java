@@ -33,6 +33,10 @@ public class ProductService {
         }
         return productRepository.searchAllProducts(name);
     }
+    public Product searchProductById(Long id) {
+
+        return productRepository.findById(id).get();
+    }
     private void validateDuplicatedRegister(String name, Long id) {
 
         var quantity = productRepository.countByNameAndDifferentId(name, id);
